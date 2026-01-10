@@ -1,0 +1,209 @@
+{
+  "pageTitle": "Dual Import: https://marutto.co.jp/water-sakutto/",
+  "pageSlug": "page-1767781896349",
+  "exportedAt": "2026-01-09T07:18:33.428Z",
+  "totalSections": 8,
+  "sections": [
+    {
+      "index": 0,
+      "role": "hero",
+      "order": 0,
+      "images": {
+        "desktop": "images/desktop/section-0-desktop.png",
+        "mobile": "images/mobile/section-0-mobile.png"
+      },
+      "clickableAreas": [],
+      "mobileClickableAreas": [],
+      "text": null,
+      "textColor": "white",
+      "textPosition": "middle",
+      "brightness": 100,
+      "grayscale": 0,
+      "overlayColor": "transparent",
+      "overlayOpacity": 0
+    },
+    {
+      "index": 1,
+      "role": "other",
+      "order": 1,
+      "images": {
+        "desktop": "images/desktop/section-1-desktop.png",
+        "mobile": "images/mobile/section-1-mobile.png"
+      },
+      "clickableAreas": [],
+      "mobileClickableAreas": [],
+      "text": null,
+      "textColor": "white",
+      "textPosition": "middle",
+      "brightness": 100,
+      "grayscale": 0,
+      "overlayColor": "transparent",
+      "overlayOpacity": 0
+    },
+    {
+      "index": 2,
+      "role": "other",
+      "order": 2,
+      "images": {
+        "desktop": "images/desktop/section-2-desktop.png",
+        "mobile": "images/mobile/section-2-mobile.png"
+      },
+      "clickableAreas": [],
+      "mobileClickableAreas": [],
+      "text": null,
+      "textColor": "white",
+      "textPosition": "middle",
+      "brightness": 100,
+      "grayscale": 0,
+      "overlayColor": "transparent",
+      "overlayOpacity": 0
+    },
+    {
+      "index": 3,
+      "role": "other",
+      "order": 3,
+      "images": {
+        "desktop": "images/desktop/section-3-desktop.png",
+        "mobile": "images/mobile/section-3-mobile.png"
+      },
+      "clickableAreas": [],
+      "mobileClickableAreas": [],
+      "text": null,
+      "textColor": "white",
+      "textPosition": "middle",
+      "brightness": 100,
+      "grayscale": 0,
+      "overlayColor": "transparent",
+      "overlayOpacity": 0
+    },
+    {
+      "index": 4,
+      "role": "other",
+      "order": 4,
+      "images": {
+        "desktop": "images/desktop/section-4-desktop.png",
+        "mobile": "images/mobile/section-4-mobile.png"
+      },
+      "clickableAreas": [],
+      "mobileClickableAreas": [],
+      "text": null,
+      "textColor": "white",
+      "textPosition": "middle",
+      "brightness": 100,
+      "grayscale": 0,
+      "overlayColor": "transparent",
+      "overlayOpacity": 0
+    },
+    {
+      "index": 5,
+      "role": "other",
+      "order": 5,
+      "images": {
+        "desktop": "images/desktop/section-5-desktop.png",
+        "mobile": "images/mobile/section-5-mobile.png"
+      },
+      "clickableAreas": [],
+      "mobileClickableAreas": [],
+      "text": null,
+      "textColor": "white",
+      "textPosition": "middle",
+      "brightness": 100,
+      "grayscale": 0,
+      "overlayColor": "transparent",
+      "overlayOpacity": 0
+    },
+    {
+      "index": 6,
+      "role": "other",
+      "order": 6,
+      "images": {
+        "desktop": "images/desktop/section-6-desktop.png",
+        "mobile": "images/mobile/section-6-mobile.png"
+      },
+      "clickableAreas": [],
+      "mobileClickableAreas": [],
+      "text": null,
+      "textColor": "white",
+      "textPosition": "middle",
+      "brightness": 100,
+      "grayscale": 0,
+      "overlayColor": "transparent",
+      "overlayOpacity": 0
+    },
+    {
+      "index": 7,
+      "role": "other",
+      "order": 7,
+      "images": {
+        "desktop": "images/desktop/section-7-desktop.png",
+        "mobile": "images/mobile/section-7-mobile.png"
+      },
+      "clickableAreas": [
+        {
+          "id": "1767861117415",
+          "x": 0.5171065493646139,
+          "y": 0.19876181166503748,
+          "width": 0.32649071358748777,
+          "height": 0.09457478005865101,
+          "actionType": "form-input",
+          "actionValue": "",
+          "label": "仮申し込み",
+          "formTitle": "お問い合わせ",
+          "formFields": [
+            {
+              "id": "field-1767861126342",
+              "fieldName": "name",
+              "fieldLabel": "お名前",
+              "fieldType": "text",
+              "required": true
+            },
+            {
+              "id": "field-1767861126343",
+              "fieldName": "email",
+              "fieldLabel": "メールアドレス",
+              "fieldType": "email",
+              "required": true
+            },
+            {
+              "id": "field-1767861134395",
+              "fieldName": "field_3",
+              "fieldLabel": "ご住所",
+              "fieldType": "text",
+              "required": false
+            }
+          ]
+        }
+      ],
+      "mobileClickableAreas": [],
+      "text": null,
+      "textColor": "white",
+      "textPosition": "middle",
+      "brightness": 100,
+      "grayscale": 0,
+      "overlayColor": "transparent",
+      "overlayOpacity": 0
+    }
+  ],
+  "header": {
+    "logoText": "",
+    "sticky": true,
+    "ctaText": "",
+    "ctaLink": "#contact",
+    "navItems": []
+  },
+  "_readme": {
+    "description": "このファイルはClaude Codeでの編集用にエクスポートされたセクション情報です。",
+    "images": {
+      "desktop": "images/desktop/ フォルダにデスクトップ用画像が格納されています",
+      "mobile": "images/mobile/ フォルダにモバイル用画像が格納されています"
+    },
+    "clickableAreas": "クリック可能エリアは相対座標 (0-1) で定義されています。x, y, width, height は画像サイズに対する比率です。",
+    "actionTypes": [
+      "url",
+      "email",
+      "phone",
+      "scroll",
+      "form-input"
+    ]
+  }
+}
