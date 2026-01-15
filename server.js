@@ -9,7 +9,7 @@ const __dirname = path.dirname(__filename);
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+const resend = process.env.RESEND_API_KEY ? new Resend(process.env.RESEND_API_KEY) : null;
 
 // JSONパーサー
 app.use(express.json());
@@ -106,6 +106,15 @@ app.post('/api/send-email', async (req, res) => {
         `;
 
         // Resendでメール送信
+        if (!resend) {
+            // 開発環境：APIキーがない場合はログ出力のみ
+            console.log('=== 開発モード：メール送信シミュレーション ===');
+            console.log('送信先:', 'contact@filtia.net');
+            console.log('件名:', subject);
+            console.log('送信データ:', { inquiryType, name, furigana, email, phone, preferredTime });
+            return res.status(200).json({ success: true, id: 'dev-mode' });
+        }
+
         const { data, error } = await resend.emails.send({
             from: 'Filtia お問い合わせ <noreply@filtia.net>',
             to: ['contact@filtia.net'],
