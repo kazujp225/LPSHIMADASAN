@@ -323,7 +323,6 @@
         };
 
         try {
-            // Resend APIエンドポイントにPOST（バックエンド実装必要）
             const response = await fetch('/api/send-email', {
                 method: 'POST',
                 headers: {
@@ -339,11 +338,8 @@
                 throw new Error('送信に失敗しました');
             }
         } catch (error) {
-            // 開発中はアラートで表示（本番ではResend APIを設定）
-            console.log('送信データ:', formData);
-            console.log('メール件名:', emailSubject);
-            alert('お問い合わせを受け付けました。担当よりご連絡いたします。');
-            document.getElementById('contact-form').reset();
+            console.error('送信エラー:', error);
+            alert('送信に失敗しました。しばらく経ってから再度お試しください。');
         }
 
         submitBtn.disabled = false;
