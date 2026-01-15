@@ -838,3 +838,40 @@ input:focus, textarea:focus {
 .policy-content li {
   margin-bottom: 0.5rem;
 }
+
+/* フォーム注意書き */
+.form-notice {
+  font-size: 0.85rem;
+  color: #64748b;
+  background: #f1f5f9;
+  padding: 0.75rem 1rem;
+  border-radius: 6px;
+  border-left: 3px solid #3b82f6;
+  line-height: 1.5;
+}
+
+/* 運営事業者テーブル */
+.company-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1rem 0;
+}
+
+.company-table th,
+.company-table td {
+  padding: 1rem;
+  border: 1px solid #e2e8f0;
+  text-align: left;
+}
+
+.company-table th {
+  background: #f8fafc;
+  font-weight: 600;
+  width: 30%;
+  color: #334155;
+}
+
+.company-table td {
+  background: #fff;
+  color: #475569;
+}

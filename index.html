@@ -132,12 +132,21 @@
         <section id="contact" class="contact-section">
             <div class="contact-container">
                 <div class="text-center contact-header">
-                    <h2 class="contact-title">仮申込フォーム</h2>
-                    <p class="contact-subtitle">※こちらの仮申込みのあと、当社からのお電話で本申込みとなります。</p>
-                    <p class="contact-note">必要事項をご記入の上、送信してください。<br>サポートセンターよりご連絡いたします。</p>
+                    <h2 class="contact-title">お問い合わせフォーム</h2>
+                    <p class="contact-subtitle">※お問い合わせ内容を確認後、担当よりご連絡いたします。</p>
+                    <p class="contact-note">必要事項をご記入の上、送信してください。</p>
                     <p class="contact-required-note"><span class="required-badge">必須</span>は必須項目です</p>
                 </div>
                 <form class="contact-form" id="contact-form">
+                    <div class="form-group">
+                        <label class="form-label">お問い合わせ区分<span class="required-badge">必須</span></label>
+                        <select name="inquiry_type" id="inquiry_type" class="form-input form-select" required>
+                            <option value="">選択してください</option>
+                            <option value="申し込み前のお問い合わせ">申し込み前のお問い合わせ</option>
+                            <option value="契約後のお問い合わせ">契約後のお問い合わせ</option>
+                            <option value="その他お問い合わせ">その他お問い合わせ</option>
+                        </select>
+                    </div>
                     <div class="form-group">
                         <label class="form-label">お名前<span class="required-badge">必須</span></label>
                         <input type="text" name="name" id="name" class="form-input" required>
@@ -245,6 +254,11 @@
                         </div>
                     </div>
 
+                    <!-- 委託会社連携の説明 -->
+                    <div class="form-group">
+                        <p class="form-notice">※内容に応じて弊社委託会社に連携し、ご連絡差し上げる場合がございます。</p>
+                    </div>
+
                     <!-- 個人情報取り扱い同意 -->
                     <div class="form-group privacy-agreement">
                         <div class="privacy-box">
@@ -259,7 +273,7 @@
                     </div>
 
                     <button type="submit" class="form-button" id="submit-btn">
-                        仮申込を送信する
+                        送信する
                     </button>
                 </form>
             </div>
@@ -268,16 +282,12 @@
 
     <footer class="site-footer">
         <div class="footer-content">
-            <div class="footer-company">
-                <h3 class="footer-company-name">株式会社ASP</h3>
-                <p class="footer-address">〒170-0013 東京都豊島区東池袋3-22-17 東池袋セントラルプレイス501B</p>
-                <p class="footer-tel">TEL: 03-6890-0671</p>
-            </div>
             <div class="footer-links">
                 <a href="privacy.html" class="footer-link">プライバシーポリシー</a>
                 <a href="terms.html" class="footer-link">個人情報の取り扱いについて</a>
+                <a href="company.html" class="footer-link">運営事業者</a>
             </div>
-            <p class="footer-copyright">&copy; 2026 株式会社ASP All rights reserved.</p>
+            <p class="footer-copyright">&copy; 2026 Filtia All rights reserved.</p>
         </div>
     </footer>
 
@@ -294,9 +304,18 @@
         const timeCheckboxes = document.querySelectorAll('input[name="time"]:checked');
         const selectedTimes = Array.from(timeCheckboxes).map(cb => cb.value).join(', ');
 
+        // お問い合わせ区分を取得
+        const inquiryType = document.getElementById('inquiry_type').value;
+        const customerName = document.getElementById('name').value;
+
+        // メール件名を生成: FiltiaHPフォーム通知:"区分"_"お名前"
+        const emailSubject = `FiltiaHPフォーム通知:${inquiryType}_${customerName}`;
+
         // フォームデータを収集
         const formData = {
-            name: document.getElementById('name').value,
+            subject: emailSubject,
+            inquiryType: inquiryType,
+            name: customerName,
             furigana: document.getElementById('furigana').value,
             email: document.getElementById('email').value,
             phone: document.getElementById('phone').value,
@@ -319,7 +338,7 @@
             });
 
             if (response.ok) {
-                alert('仮申込を受け付けました。サポートセンターよりご連絡いたします。');
+                alert('お問い合わせを受け付けました。担当よりご連絡いたします。');
                 document.getElementById('contact-form').reset();
             } else {
                 throw new Error('送信に失敗しました');
@@ -327,12 +346,13 @@
         } catch (error) {
             // 開発中はアラートで表示（本番ではResend APIを設定）
             console.log('送信データ:', formData);
-            alert('仮申込を受け付けました。サポートセンターよりご連絡いたします。');
+            console.log('メール件名:', emailSubject);
+            alert('お問い合わせを受け付けました。担当よりご連絡いたします。');
             document.getElementById('contact-form').reset();
         }
 
         submitBtn.disabled = false;
-        submitBtn.textContent = '仮申込を送信する';
+        submitBtn.textContent = '送信する';
     });
     </script>
 </body>
