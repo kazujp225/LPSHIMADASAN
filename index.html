@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,7 @@
     <link rel="stylesheet" href="./style.css">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet">
 </head>
+
 <body class="min-h-screen bg-gray-50 flex flex-col">
 
     <!-- ローディング画面 -->
@@ -30,13 +32,16 @@
             z-index: 9999;
             transition: opacity 0.5s ease, visibility 0.5s ease;
         }
+
         #preloader.hidden {
             opacity: 0;
             visibility: hidden;
         }
+
         .loader-content {
             text-align: center;
         }
+
         .loader-spinner {
             width: 50px;
             height: 50px;
@@ -46,24 +51,64 @@
             animation: spin 1s linear infinite;
             margin: 0 auto 15px;
         }
+
         .loader-text {
             color: #4a90a4;
             font-size: 14px;
             font-weight: 500;
         }
+
         @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
         }
     </style>
     <script>
-        window.addEventListener('load', function() {
-            const preloader = document.getElementById('preloader');
-            preloader.classList.add('hidden');
+        (function() {
+            const images = document.querySelectorAll('img');
+            let loadedCount = 0;
+            const totalImages = images.length;
+            const loaderText = document.querySelector('.loader-text');
+
+            function checkAllLoaded() {
+                loadedCount++;
+                const percent = Math.round((loadedCount / totalImages) * 100);
+                loaderText.textContent = 'Loading... ' + percent + '%';
+
+                if (loadedCount >= totalImages) {
+                    const preloader = document.getElementById('preloader');
+                    preloader.classList.add('hidden');
+                    setTimeout(function () {
+                        preloader.style.display = 'none';
+                    }, 500);
+                }
+            }
+
+            images.forEach(function(img) {
+                if (img.complete) {
+                    checkAllLoaded();
+                } else {
+                    img.addEventListener('load', checkAllLoaded);
+                    img.addEventListener('error', checkAllLoaded);
+                }
+            });
+
+            // Fallback: 最大10秒でローダーを非表示
             setTimeout(function() {
-                preloader.style.display = 'none';
-            }, 500);
-        });
+                const preloader = document.getElementById('preloader');
+                if (!preloader.classList.contains('hidden')) {
+                    preloader.classList.add('hidden');
+                    setTimeout(function () {
+                        preloader.style.display = 'none';
+                    }, 500);
+                }
+            }, 10000);
+        })();
     </script>
 
     <!-- デスクトップ用ヘッダー -->
@@ -90,14 +135,12 @@
                 <img src="./images/mobile/section-1-mobile.png" alt="other" class="block w-full h-auto">
             </picture>
         </section>
-        <!-- section2 非表示
         <section id="other-2" class="relative w-full overflow-hidden">
             <picture>
                 <source media="(min-width: 768px)" srcset="./images/desktop/section-2-desktop.png">
                 <img src="./images/mobile/section-2-mobile.png" alt="other" class="block w-full h-auto">
             </picture>
         </section>
-        -->
         <section id="other-3" class="relative w-full overflow-hidden">
             <picture>
                 <source media="(min-width: 768px)" srcset="./images/desktop/section-3-desktop.png">
@@ -116,14 +159,18 @@
                 <img src="./images/mobile/section-5-mobile.png" alt="other" class="block w-full h-auto">
             </picture>
         </section>
-        <!-- section-6 非表示（section-5と内容が重複するため）
         <section id="other-6" class="relative w-full overflow-hidden">
             <picture>
                 <source media="(min-width: 768px)" srcset="./images/desktop/section-6-desktop.png">
                 <img src="./images/mobile/section-6-mobile.png" alt="other" class="block w-full h-auto">
             </picture>
         </section>
-        -->
+        <section id="other-7" class="relative w-full overflow-hidden">
+            <picture>
+                <source media="(min-width: 768px)" srcset="./images/desktop/section-7-desktop.png">
+                <img src="./images/mobile/section-7-mobile.png" alt="other" class="block w-full h-auto">
+            </picture>
+        </section>
         <section id="contact" class="contact-section">
             <div class="contact-container">
                 <div class="text-center contact-header">
@@ -243,9 +290,12 @@
                             <label class="checkbox-label"><input type="checkbox" name="time" value="土日"> 土日</label>
                             <label class="checkbox-label"><input type="checkbox" name="time" value="祝日"> 祝日</label>
                             <label class="checkbox-label"><input type="checkbox" name="time" value="午前中"> 午前中</label>
-                            <label class="checkbox-label"><input type="checkbox" name="time" value="12:00~15:00"> 12:00~15:00</label>
-                            <label class="checkbox-label"><input type="checkbox" name="time" value="15:00~18:00"> 15:00~18:00</label>
-                            <label class="checkbox-label"><input type="checkbox" name="time" value="18:00~"> 18:00~</label>
+                            <label class="checkbox-label"><input type="checkbox" name="time" value="12:00~15:00">
+                                12:00~15:00</label>
+                            <label class="checkbox-label"><input type="checkbox" name="time" value="15:00~18:00">
+                                15:00~18:00</label>
+                            <label class="checkbox-label"><input type="checkbox" name="time" value="18:00~">
+                                18:00~</label>
                         </div>
                     </div>
 
@@ -258,7 +308,8 @@
                     <div class="form-group privacy-agreement">
                         <div class="privacy-box">
                             <p class="privacy-text">
-                                <a href="terms.html" target="_blank" class="privacy-link">個人情報の取り扱いについて</a>をご確認の上、同意いただける場合はチェックを入れてください。
+                                <a href="terms.html" target="_blank"
+                                    class="privacy-link">個人情報の取り扱いについて</a>をご確認の上、同意いただける場合はチェックを入れてください。
                             </p>
                             <label class="checkbox-label privacy-checkbox">
                                 <input type="checkbox" id="privacy-agree" required>
@@ -288,63 +339,64 @@
 
     <!-- Resend用フォーム送信スクリプト -->
     <script>
-    document.getElementById('contact-form').addEventListener('submit', async function(e) {
-        e.preventDefault();
+        document.getElementById('contact-form').addEventListener('submit', async function (e) {
+            e.preventDefault();
 
-        const submitBtn = document.getElementById('submit-btn');
-        submitBtn.disabled = true;
-        submitBtn.textContent = '送信中...';
+            const submitBtn = document.getElementById('submit-btn');
+            submitBtn.disabled = true;
+            submitBtn.textContent = '送信中...';
 
-        // 希望時間帯を取得
-        const timeCheckboxes = document.querySelectorAll('input[name="time"]:checked');
-        const selectedTimes = Array.from(timeCheckboxes).map(cb => cb.value).join(', ');
+            // 希望時間帯を取得
+            const timeCheckboxes = document.querySelectorAll('input[name="time"]:checked');
+            const selectedTimes = Array.from(timeCheckboxes).map(cb => cb.value).join(', ');
 
-        // お問い合わせ区分を取得
-        const inquiryType = document.getElementById('inquiry_type').value;
-        const customerName = document.getElementById('name').value;
+            // お問い合わせ区分を取得
+            const inquiryType = document.getElementById('inquiry_type').value;
+            const customerName = document.getElementById('name').value;
 
-        // メール件名を生成: FiltiaHPフォーム通知:"区分"_"お名前"
-        const emailSubject = `FiltiaHPフォーム通知:${inquiryType}_${customerName}`;
+            // メール件名を生成: FiltiaHPフォーム通知:"区分"_"お名前"
+            const emailSubject = `FiltiaHPフォーム通知:${inquiryType}_${customerName}`;
 
-        // フォームデータを収集
-        const formData = {
-            subject: emailSubject,
-            inquiryType: inquiryType,
-            name: customerName,
-            furigana: document.getElementById('furigana').value,
-            email: document.getElementById('email').value,
-            phone: document.getElementById('phone').value,
-            zipcode: document.getElementById('zipcode').value,
-            prefecture: document.getElementById('prefecture').value,
-            city: document.getElementById('city').value,
-            address: document.getElementById('address').value,
-            remarks: document.getElementById('remarks').value,
-            preferredTime: selectedTimes
-        };
+            // フォームデータを収集
+            const formData = {
+                subject: emailSubject,
+                inquiryType: inquiryType,
+                name: customerName,
+                furigana: document.getElementById('furigana').value,
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value,
+                zipcode: document.getElementById('zipcode').value,
+                prefecture: document.getElementById('prefecture').value,
+                city: document.getElementById('city').value,
+                address: document.getElementById('address').value,
+                remarks: document.getElementById('remarks').value,
+                preferredTime: selectedTimes
+            };
 
-        try {
-            const response = await fetch('/api/send-email', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(formData)
-            });
+            try {
+                const response = await fetch('/api/send-email', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(formData)
+                });
 
-            if (response.ok) {
-                alert('お問い合わせを受け付けました。担当よりご連絡いたします。');
-                document.getElementById('contact-form').reset();
-            } else {
-                throw new Error('送信に失敗しました');
+                if (response.ok) {
+                    alert('お問い合わせを受け付けました。担当よりご連絡いたします。');
+                    document.getElementById('contact-form').reset();
+                } else {
+                    throw new Error('送信に失敗しました');
+                }
+            } catch (error) {
+                console.error('送信エラー:', error);
+                alert('送信に失敗しました。しばらく経ってから再度お試しください。');
             }
-        } catch (error) {
-            console.error('送信エラー:', error);
-            alert('送信に失敗しました。しばらく経ってから再度お試しください。');
-        }
 
-        submitBtn.disabled = false;
-        submitBtn.textContent = '送信する';
-    });
+            submitBtn.disabled = false;
+            submitBtn.textContent = '送信する';
+        });
     </script>
 </body>
+
 </html>
