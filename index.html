@@ -98,7 +98,7 @@
                 }
             });
 
-            // Fallback: 最大10秒でローダーを非表示
+            // Fallback: 最大5秒でローダーを非表示
             setTimeout(function() {
                 const preloader = document.getElementById('preloader');
                 if (!preloader.classList.contains('hidden')) {
@@ -107,7 +107,7 @@
                         preloader.style.display = 'none';
                     }, 500);
                 }
-            }, 10000);
+            }, 5000);
         })();
     </script>
 
