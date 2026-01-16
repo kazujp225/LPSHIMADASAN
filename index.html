@@ -343,11 +343,18 @@
             e.preventDefault();
 
             const submitBtn = document.getElementById('submit-btn');
-            submitBtn.disabled = true;
-            submitBtn.textContent = '送信中...';
 
             // 希望時間帯を取得
             const timeCheckboxes = document.querySelectorAll('input[name="time"]:checked');
+
+            // 希望時間帯のバリデーション
+            if (timeCheckboxes.length === 0) {
+                alert('電話連絡ご希望時間帯を1つ以上選択してください。');
+                return;
+            }
+
+            submitBtn.disabled = true;
+            submitBtn.textContent = '送信中...';
             const selectedTimes = Array.from(timeCheckboxes).map(cb => cb.value).join(', ');
 
             // お問い合わせ区分を取得
@@ -383,8 +390,7 @@
                 });
 
                 if (response.ok) {
-                    alert('お問い合わせを受け付けました。担当よりご連絡いたします。');
-                    document.getElementById('contact-form').reset();
+                    window.location.href = 'thanks.html';
                 } else {
                     throw new Error('送信に失敗しました');
                 }

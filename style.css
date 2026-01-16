@@ -160,7 +160,7 @@ button {
 .hidden { display: none; }
 
 /* Form Elements */
-input, textarea {
+input:not([type="checkbox"]), textarea {
   appearance: none;
   background-color: #fff;
 }
