@@ -563,6 +563,11 @@ input:focus, textarea:focus {
   .desktop-header {
     display: block;
   }
+
+  /* ヘッダー分の空白をbodyに追加 */
+  body {
+    padding-top: 58px;
+  }
 }
 
 .header-nav {
