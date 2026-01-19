@@ -379,6 +379,75 @@ input:focus, textarea:focus {
   padding-right: 2.5rem;
 }
 
+/* Accordion Select */
+.accordion-select {
+  position: relative;
+  width: 100%;
+}
+
+.accordion-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  background: #ffffff;
+  border: 1px solid #d1d5db;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  font-size: 0.875rem;
+  color: #374151;
+  transition: all 0.3s ease;
+}
+
+.accordion-header:hover {
+  border-color: #9ca3af;
+}
+
+.accordion-arrow {
+  font-size: 0.7rem;
+  transition: transform 0.3s ease;
+  color: #6b7280;
+}
+
+.accordion-select.open .accordion-arrow {
+  transform: rotate(180deg);
+}
+
+.accordion-content {
+  max-height: 0;
+  overflow: hidden;
+  background: #ffffff;
+  border: 1px solid #d1d5db;
+  border-top: none;
+  border-radius: 0 0 0.5rem 0.5rem;
+  transition: max-height 0.3s ease;
+}
+
+.accordion-select.open .accordion-content {
+  max-height: 200px;
+}
+
+.accordion-select.open .accordion-header {
+  border-radius: 0.5rem 0.5rem 0 0;
+}
+
+.accordion-option {
+  padding: 0.75rem 1rem;
+  cursor: pointer;
+  font-size: 0.875rem;
+  color: #374151;
+  transition: background-color 0.2s ease;
+}
+
+.accordion-option:hover {
+  background-color: #f3f4f6;
+}
+
+.accordion-option.selected {
+  background-color: #e0f2fe;
+  color: #0369a1;
+}
+
 .checkbox-group {
   display: flex;
   flex-wrap: wrap;
@@ -587,8 +656,8 @@ input:focus, textarea:focus {
 .header-link {
   font-size: 0.9rem;
   font-weight: 700;
-  color: #ffffff;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  color: #000000;
+  text-shadow: none;
   transition: all 0.3s ease;
   position: relative;
   padding: 0.3rem 0;
@@ -607,7 +676,7 @@ input:focus, textarea:focus {
 }
 
 .header-link:hover {
-  color: #f4d03f;
+  color: #555555;
 }
 
 .header-link:hover::after {
@@ -616,7 +685,7 @@ input:focus, textarea:focus {
 
 .header-cta {
   background: #ffffff;
-  color: #1a1a2e;
+  color: #000000;
   padding: 8px 20px;
   border-radius: 50px;
   font-weight: 900;
@@ -625,7 +694,7 @@ input:focus, textarea:focus {
   transition: all 0.3s ease;
   text-shadow: none;
   letter-spacing: 0.05em;
-  border: none;
+  border: 2px solid #000000;
 }
 
 .header-cta:hover {

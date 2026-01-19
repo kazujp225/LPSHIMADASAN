@@ -100,12 +100,18 @@
                 <form class="contact-form" id="contact-form">
                     <div class="form-group">
                         <label class="form-label">お問い合わせ区分<span class="required-badge">必須</span></label>
-                        <select name="inquiry_type" id="inquiry_type" class="form-input form-select" required>
-                            <option value="">選択してください</option>
-                            <option value="申し込み前のお問い合わせ">申し込み前のお問い合わせ</option>
-                            <option value="契約後のお問い合わせ">契約後のお問い合わせ</option>
-                            <option value="その他お問い合わせ">その他お問い合わせ</option>
-                        </select>
+                        <input type="hidden" name="inquiry_type" id="inquiry_type" required>
+                        <div class="accordion-select">
+                            <div class="accordion-header" id="accordion-header">
+                                <span id="accordion-selected">選択してください</span>
+                                <span class="accordion-arrow">▼</span>
+                            </div>
+                            <div class="accordion-content" id="accordion-content">
+                                <div class="accordion-option" data-value="申し込み前のお問い合わせ">申し込み前のお問い合わせ</div>
+                                <div class="accordion-option" data-value="契約後のお問い合わせ">契約後のお問い合わせ</div>
+                                <div class="accordion-option" data-value="その他お問い合わせ">その他お問い合わせ</div>
+                            </div>
+                        </div>
                     </div>
                     <div class="form-group">
                         <label class="form-label">お名前<span class="required-badge">必須</span></label>
@@ -257,6 +263,40 @@
 
     <!-- Resend用フォーム送信スクリプト -->
     <script>
+        // アコーディオンメニューの動作
+        const accordionSelect = document.querySelector('.accordion-select');
+        const accordionHeader = document.getElementById('accordion-header');
+        const accordionContent = document.getElementById('accordion-content');
+        const accordionSelected = document.getElementById('accordion-selected');
+        const accordionOptions = document.querySelectorAll('.accordion-option');
+        const inquiryTypeInput = document.getElementById('inquiry_type');
+
+        accordionHeader.addEventListener('click', function() {
+            accordionSelect.classList.toggle('open');
+        });
+
+        accordionOptions.forEach(option => {
+            option.addEventListener('click', function() {
+                const value = this.getAttribute('data-value');
+                accordionSelected.textContent = value;
+                inquiryTypeInput.value = value;
+
+                // 選択状態をリセットして新しい選択を設定
+                accordionOptions.forEach(opt => opt.classList.remove('selected'));
+                this.classList.add('selected');
+
+                // アコーディオンを閉じる
+                accordionSelect.classList.remove('open');
+            });
+        });
+
+        // 外側をクリックしたら閉じる
+        document.addEventListener('click', function(e) {
+            if (!accordionSelect.contains(e.target)) {
+                accordionSelect.classList.remove('open');
+            }
+        });
+
         document.getElementById('contact-form').addEventListener('submit', async function (e) {
             e.preventDefault();
 
