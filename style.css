@@ -552,7 +552,7 @@ input:focus, textarea:focus {
   left: 0;
   right: 0;
   z-index: 100;
-  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+  background: #b3e0f2;
   backdrop-filter: blur(10px);
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3), 0 0 40px rgba(212, 175, 55, 0.1);
   padding: 1.25rem 2rem;
@@ -615,23 +615,23 @@ input:focus, textarea:focus {
 }
 
 .header-cta {
-  background: linear-gradient(135deg, #d4af37 0%, #f4d03f 50%, #d4af37 100%);
+  background: #ffffff;
   color: #1a1a2e;
   padding: 8px 20px;
   border-radius: 50px;
   font-weight: 900;
   font-size: 0.85rem;
-  box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  box-shadow: 0 4px 15px rgba(255, 255, 255, 0.3);
   transition: all 0.3s ease;
   text-shadow: none;
   letter-spacing: 0.05em;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: none;
 }
 
 .header-cta:hover {
   transform: translateY(-3px);
-  box-shadow: 0 8px 25px rgba(212, 175, 55, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.3);
-  background: linear-gradient(135deg, #f4d03f 0%, #d4af37 50%, #f4d03f 100%);
+  box-shadow: 0 8px 25px rgba(255, 255, 255, 0.4);
+  background: #f0f0f0;
 }
 
 /* Footer */
